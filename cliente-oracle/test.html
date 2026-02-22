@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Prueba de conexión Node + Oracle</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+    }
+    table {
+      border-collapse: collapse;
+      margin-top: 20px;
+      width: 100%;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background: #f0f0f0;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    #mensaje {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Prueba de conexión a Oracle</h1>
+
+  <button onclick="probar()">Cargar datos</button>
+
+  <div id="mensaje"></div>
+
+  <table id="tabla" style="display:none;">
+    <thead id="thead"></thead>
+    <tbody id="tbody"></tbody>
+  </table>
+
+  <script>
+    function probar() {
+      document.getElementById('mensaje').textContent = "Consultando...";
+      document.getElementById('tabla').style.display = "none";
+
+      fetch("http://localhost:3000/clientes")
+        .then(response => response.json())
+        .then(data => {
+          if (!Array.isArray(data) || data.length === 0) {
+            document.getElementById('mensaje').textContent = "No se recibieron datos.";
+            return;
+          }
+
+          document.getElementById('mensaje').textContent = "Datos cargados correctamente.";
+          document.getElementById('tabla').style.display = "table";
+
+          const columnas = Object.keys(data[0]);
+          const thead = document.getElementById('thead');
+          thead.innerHTML = "<tr>" + columnas.map(col => `<th>${col}</th>`).join("") + "</tr>";
+
+          const tbody = document.getElementById('tbody');
+          tbody.innerHTML = data.map(fila =>
+            "<tr>" + columnas.map(col => `<td>${fila[col]}</td>`).join("") + "</tr>"
+          ).join("");
+        })
+        .catch(err => {
+          document.getElementById('mensaje').textContent = "Error: " + err;
+        });
+    }
+  </script>
+
+</body>
+</html>

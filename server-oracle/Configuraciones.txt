@@ -1,0 +1,16 @@
+1. En terminal de vscode
+	1.1. npm init -y
+	1.2. npm install express oracledb
+2. Descargá Oracle Instant Client Basic (versión 19 o 21) desde Oracle.
+    2.1 connectString: HOST:PORT/SERVICE_NAME
+3. Crear el archivo principal del servidor: server.js
+4. Probar el servidor node server.js
+	4.1 node server.js
+
+
+
+- npm install cors
+- habilitar CORS:
+	const app = express();
+	app.use(cors());
+	
