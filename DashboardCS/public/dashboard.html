@@ -2,39 +2,19 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Prueba de conexión Node + Oracle</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 40px;
-    }
-    table {
-      border-collapse: collapse;
-      margin-top: 20px;
-      width: 100%;
-    }
-    th, td {
-      border: 1px solid #ccc;
-      padding: 8px;
-      text-align: left;
-    }
-    th {
-      background: #f0f0f0;
-    }
-    button {
-      padding: 10px 20px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-    #mensaje {
-      margin-top: 20px;
-      font-weight: bold;
-    }
-  </style>
+  <title>Dashboard - CenturySystems</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/jpeg" href="../img/sistemascentury_logo.jpeg">
+ <link rel="stylesheet" href="styles/styles.css">
 </head>
+
 <body>
 
-  <h1>Prueba de conexión a Oracle</h1>
+  <!-- Caja negra con texto naranja -->
+  <div id="cabecera-box"></div>
+
+  <h1>BD Oracle - CenturySystems</h1>
 
   <button onclick="probar()">Cargar datos</button>
 
@@ -46,6 +26,23 @@
   </table>
 
   <script>
+    // Cargar cabecera automáticamente
+    fetch("http://localhost:3000/cabecera")
+      .then(res => res.json())
+      .then(data => {
+        const box = document.getElementById("cabecera-box");
+
+        // Convertir cada campo en una línea
+        let texto = "";
+        for (const key in data) {
+          texto += `${key}: ${data[key]}\n`;
+        }
+
+        box.textContent = texto;
+      })
+      .catch(err => console.error("Error cargando cabecera:", err));
+
+    // Función para cargar datos desde Oracle
     function probar() {
       document.getElementById('mensaje').textContent = "Consultando...";
       document.getElementById('tabla').style.display = "none";

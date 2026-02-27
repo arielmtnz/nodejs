@@ -1,0 +1,26 @@
+choco install openssl
+openssl version
+gcm openssl -All
+C:\Program Files\OpenSSL-Win64\bin
+setx PATH "$env:PATH;C:\Program Files\OpenSSL-Win64\bin"
+cerrar powershell
+Generar el archivo .cnf para los certificados en la carpeta certs de nginx.
+openssl version
+
+openssl req -x509 -nodes -days 365 -newkey rsa:2048  -keyout C:/nginx/certs/dashboardcenturysystems.key   -out C:/nginx/certs/dashboardcenturysystems.crt   -subj "/CN=dashboardcenturysystems"   -addext "subjectAltName = DNS:dashboardcenturysystems"
+
+
+Importar los certificados para Windows
+certmgr.msc
+Entidades de certificación raíz de confianza → Certificados
+- Clic derecho → Importar archivos .crt
+"Colocar todos los certificados en el siguiente almacén".
+Entidades de certificación de raíz de confianza.
+
+ 
+
+openssl req -x509 -nodes -days 365 \
+  -newkey rsa:2048 \
+  -keyout dashboard.key \
+  -out dashboard.crt \
+  -subj "/CN=dashboardcenturysystems"
