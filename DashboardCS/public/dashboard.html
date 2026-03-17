@@ -5,25 +5,40 @@
   <title>Dashboard - CenturySystems</title>
 
   <!-- Favicon -->
-  <link rel="icon" type="image/jpeg" href="../img/sistemascentury_logo.jpeg">
+  <link rel="icon" type="image/jpeg" href="/img/sistemascentury_logo.jpeg">
  <link rel="stylesheet" href="styles/styles.css">
 </head>
 
 <body>
 
-  <!-- Caja negra con texto naranja -->
+  <!-- Caja negra con texto naranja (footer) -->
   <div id="cabecera-box"></div>
 
-  <h1>BD Oracle - CenturySystems</h1>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <img src="/img/sistemascentury_logo.jpeg" alt="CenturySystems" class="logo">
+        <div>
+          <h1>BD Oracle - CenturySystems</h1>
+          <p class="subtitle">Panel administrativo — consulta de clientes</p>
+        </div>
+      </div>
+      <nav class="actions">
+        <button class="btn primary" onclick="probar()">Cargar datos</button>
+      </nav>
+    </div>
+  </header>
 
-  <button onclick="probar()">Cargar datos</button>
+  <main class="container">
+    <div id="mensaje" class="status" role="status"></div>
 
-  <div id="mensaje"></div>
-
-  <table id="tabla" style="display:none;">
-    <thead id="thead"></thead>
-    <tbody id="tbody"></tbody>
-  </table>
+    <div class="table-wrap">
+      <table id="tabla" style="display:none;">
+        <thead id="thead"></thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+  </main>
 
   <script>
     // Cargar cabecera automáticamente

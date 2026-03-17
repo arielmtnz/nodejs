@@ -6,7 +6,18 @@ const cors = require('cors');
 const path = require('path');
 
 const app = express();
+// Logger simple para depuración de peticiones (muestra método y URL)
+app.use((req, res, next) => {
+  console.log(new Date().toISOString(), req.method, req.url);
+  next();
+});
+
+// Servir archivos estáticos desde /public
 app.use(express.static("public"))
+
+// Servir la carpeta `img` en la ruta /img para que las imágenes fuera de `public`
+// sean accesibles desde el navegador sin mover archivos.
+app.use('/img', express.static(path.join(__dirname, 'img')))
 
 app.use(cors());
 

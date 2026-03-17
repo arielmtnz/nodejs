@@ -1,31 +1,113 @@
+/* Reset básico y tipografía */
 body {
-font-family: Arial, sans-serif;
-margin: 40px;
-background-color: #555353;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+	margin: 0;
+	background-color: #f5f7fa;
+	color: #222;
 }
+
+.container {
+	max-width: 1100px;
+	margin: 0 auto;
+	padding: 24px;
+}
+
+/* Header */
+.site-header {
+	background: #ffffff;
+	border-bottom: 1px solid #e6e9ee;
+	box-shadow: 0 1px 2px rgba(16,24,40,0.03);
+}
+.header-inner {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.brand {
+	display: flex;
+	gap: 12px;
+	align-items: center;
+}
+.logo {
+	width: 56px;
+	height: 56px;
+	object-fit: cover;
+	border-radius: 6px;
+	box-shadow: 0 1px 3px rgba(16,24,40,0.06);
+}
+.brand h1 {
+	margin: 0;
+	font-size: 18px;
+}
+.subtitle {
+	margin: 2px 0 0 0;
+	color: #6b7280;
+	font-size: 13px;
+}
+
+.actions {
+	display: flex;
+	gap: 8px;
+}
+
+.btn {
+	display: inline-block;
+	padding: 8px 14px;
+	font-size: 14px;
+	border-radius: 6px;
+	border: 1px solid transparent;
+	cursor: pointer;
+}
+.btn.primary {
+	background-color: #3f3fc1;
+	color: #fff;
+	box-shadow: 0 6px 18px rgba(63,63,193,0.12);
+}
+
+.status {
+	margin: 18px 0;
+	font-weight: 600;
+	color: #111827;
+}
+
+.table-wrap {
+	background: #fff;
+	border: 1px solid #e6e9ee;
+	border-radius: 8px;
+	padding: 12px;
+	box-shadow: 0 4px 14px rgba(16,24,40,0.06);
+	overflow: auto;
+}
+
 table {
-border-collapse: collapse;
-margin-top: 20px;
-width: 100%;
+	border-collapse: collapse;
+	width: 100%;
+	min-width: 600px;
 }
 th, td {
-border: 1px solid #ccc;
-padding: 8px;
-text-align: left;
+	padding: 12px 10px;
+	text-align: left;
+	border-bottom: 1px solid #eef2f7;
 }
 th {
-background: #f0f0f0;
+	background: linear-gradient(180deg,#fbfdff,#f6f8fb);
+	font-weight: 600;
+	color: #374151;
+	position: sticky;
+	top: 0;
 }
-button {
+tr:nth-child(even) td {
+	background: #fbfcfd;
+}
+tr:hover td {
+	background: #f1f5f9;
+}
 
-font-size: 10px;
-cursor: pointer;
-background-color: rgb(63, 63, 193);
-color: #fff;
-}
-#mensaje {
-margin-top: 20px;
-font-weight: bold;
+@media (max-width: 720px) {
+	.header-inner { flex-direction: column; align-items: flex-start; gap: 12px; }
+	.logo { width:48px; height:48px }
+	.container { padding: 16px }
+	table { min-width: 480px }
 }
 
 /* Caja de cabecera ocupando 100% */
