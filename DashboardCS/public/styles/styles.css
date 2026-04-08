@@ -97,6 +97,7 @@ th {
 	top: 0;
 }
 tr:nth-child(even) td {
+  background: #fffff0;
 }
 tr:hover td {
 	background: #f1f5f9;
